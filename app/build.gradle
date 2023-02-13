@@ -1,0 +1,148 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+ext {
+
+    // Libraries
+    CORE_KTX_VERSION = "1.8.0"
+    APPCOMPAT_VERSION = "1.4.2"
+    CONSTRAINTLAYOUT_VERSION = "2.1.4"
+    MATERIAL_VERSION = "1.6.1"
+
+    COROUTINES_VERSION = "1.6.1"
+
+    ACTIVITY_VERSION = "1.2.0-rc01"
+    FRAGMENT_VERSION = "1.3.0-rc01"
+    LIFECYCLE_VERSION = "2.5.1"
+    LEGACY_SUPPORT_VERSION = "1.0.0"
+    RETROFIT2_VERSION = "2.9.0"
+
+    PICASSO_VERSION = "2.71828"
+    LOGGING_INTERCEPTOR_VERSION = "4.9.0"
+    DATASTORE_PREFERENCES_VERSION = "1.0.0-alpha04"
+    RETROFIT2_KOTLINX_SERIALIZATION_CONVERTER_VERSION = "0.8.0"
+    HILT_JETPACK_VERSION = "1.0.0-alpha03"
+    KOTLINX_SERIALIZATION_JSON_VERSION = "1.0.0"
+    GSON_VERSION = "2.9.0"
+
+
+    //test
+    JUNIT_VERSION = "4.13.2"
+    ANDROID_JUNIT_VERSION = "1.1.3"
+    RUNNER_VERSION = "1.2.0"
+    ESPRESSO_VERSION = "3.4.0"
+
+}
+android {
+    namespace 'com.aymenjegham.orange'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.aymenjegham.orange"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    //Android
+    implementation "androidx.core:core-ktx:" + CORE_KTX_VERSION
+    implementation "androidx.appcompat:appcompat:" + APPCOMPAT_VERSION
+    implementation "com.google.android.material:material:" + MATERIAL_VERSION
+    implementation "androidx.constraintlayout:constraintlayout:" + CONSTRAINTLAYOUT_VERSION
+    implementation "androidx.fragment:fragment-ktx:" + FRAGMENT_VERSION
+    implementation "androidx.activity:activity-ktx:" + ACTIVITY_VERSION
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:" + KOTLIN_VERSION
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:" + KOTLINX_SERIALIZATION_JSON_VERSION
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation project(path: ':framework')
+    implementation project(path: ':core')
+
+    //Test
+    testImplementation "junit:junit:" +JUNIT_VERSION
+    androidTestImplementation "androidx.test.ext:junit:"+ ANDROID_JUNIT_VERSION
+    androidTestImplementation "androidx.test.espresso:espresso-core:"+ESPRESSO_VERSION
+
+    //Testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "com.google.truth:truth:1.1.3"
+    testImplementation 'com.google.dagger:hilt-android-testing:2.44.2'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.44.2'
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.44.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    implementation "androidx.test:core:1.5.0"
+    testImplementation "org.hamcrest:hamcrest-all:1.3"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.robolectric:robolectric:4.3.1"
+    testImplementation "com.google.truth:truth:1.1.3"
+    testImplementation "org.mockito:mockito-core:4.10.0"
+
+    // Instrumented Unit Tests
+    androidTestImplementation "junit:junit:4.13.2"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "com.google.truth:truth:1.1.3"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "org.mockito:mockito-core:4.10.0"
+    debugImplementation "androidx.fragment:fragment-testing:1.6.0-alpha04"
+
+    //Architecture Components - Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:"+ LIFECYCLE_VERSION
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:" + LIFECYCLE_VERSION
+
+
+    // Picasso
+    implementation "com.squareup.picasso:picasso:" + PICASSO_VERSION
+
+    //Architecture Components - Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:" + NAVIGATION_VERSION
+    implementation "androidx.navigation:navigation-ui-ktx:" + NAVIGATION_VERSION
+
+    // Hilt
+    kapt 'androidx.hilt:hilt-compiler:' + HILT_JETPACK_VERSION
+    implementation "com.google.dagger:hilt-android:2.44.2"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+
+    //Kotlin coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:" + COROUTINES_VERSION
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:" + COROUTINES_VERSION
+
+    //Gson
+    implementation "com.google.code.gson:gson:" + GSON_VERSION
+}

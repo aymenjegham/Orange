@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.aymenjegham.orange.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+
+<!--        <action-->
+<!--            android:id="@+id/toDetails"-->
+<!--            app:destination="@id/details"-->
+<!--            app:launchSingleTop="false"-->
+<!--            app:popUpTo="@+id/home"-->
+<!--            app:popUpToInclusive="false" />-->
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/details"-->
+<!--        android:n.ui.details.DetailsFragment"-->
+<!--        tools:layout="@layout/fragment_details">-->
+
+<!--        <argument-->
+<!--            android:name="-->
+<!--            app:argType="ta.model." />-->
+<!--    </fragment>-->
+
+
+</navigation>
